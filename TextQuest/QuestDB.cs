@@ -50,7 +50,7 @@ namespace TextQuest
 	                            `Question`	INTEGER NOT NULL,
 	                            `text_ru`	TEXT,
 	                            `text_en`	TEXT,
-	                            `script`	INTEGER DEFAULT NULL
+	                            `script`	TEXT DEFAULT NULL
                             );");
         }
 

@@ -36,8 +36,8 @@ namespace TextQuest
             switch (CommandAndParameters[0])
             {
                 case "language": SetLanguage(CommandAndParameters[1]); break;
-                case "question": ((Form1)Owner).SetQuestion(Data.Question(
-                    Convert.ToInt32(CommandAndParameters[1]))); break;
+                case "question": ((Form1)Owner).CurrentQuestion = Data.Question(
+                    Convert.ToInt32(CommandAndParameters[1])); break;
             }
         }
 
