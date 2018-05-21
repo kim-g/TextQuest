@@ -36,7 +36,6 @@ namespace TextQuest
             InitializeComponent();
             ScriptEngine = new Script(this, Data, Texts);
             CurrentQuestion = Data.Question(1);
-            Answers.Add(SetButton("Тест", ""));
         }
 
         /// <summary>
@@ -51,17 +50,32 @@ namespace TextQuest
             NewButton.Text = Name;
             NewButton.Tag = Script;
             NewButton.Click += AnswerButton_Click;
-            NewButton.Dock = DockStyle.Bottom;
-            NewButton.Parent = this;
+            NewButton.Visible = false;
+            NewButton.Parent = AnswersPanel;
+            NewButton.Left = 0;
+            NewButton.Width = NewButton.Parent.Width;
+            NewButton.Refresh();
+            AnswerAnimator.SetDecoration(NewButton, AnimatorNS.DecorationType.None);
 
             return NewButton;
         }
 
         private void SetQuestion()
         {
-            animator.HideSync(label1, true);
-            label1.Text = CurrentQuestion.Text;
-            animator.Show(label1);
+            QuestionAnimator.HideSync(QuestionLabel, true);
+            QuestionLabel.Text = CurrentQuestion.Text;
+            QuestionAnimator.Show(QuestionLabel);
+
+            foreach (Button OldButton in Answers) OldButton.Dispose();
+            Answers.Clear();
+
+            foreach (Answer NewAnswer in CurrentQuestion.Answers)
+            {
+                Button NewButton = SetButton(NewAnswer.Text, NewAnswer.Script);
+                NewButton.Top = (Answers.Count) * (NewButton.Height + 10);
+                Answers.Add(NewButton);
+                AnswerAnimator.Show(Answers[Answers.Count - 1], false);
+            }
         }
 
         /// <summary>
