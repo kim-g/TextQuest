@@ -14,12 +14,14 @@ namespace TextQuest
     {
         // private vars
         QuestDB Data = new QuestDB("Data.db");
-        SQLite.SQLiteLanguage Texts = new SQLite.SQLiteLanguage("Texts.db");
+        SQLite.SQLiteLanguage Texts = SQLite.SQLiteLanguage.Open("Texts.db");
         Question current_question;
         List<Button> Answers = new List<Button>();
+        
 
         // Public vars
         public Script ScriptEngine { get; set; }
+        public Question Error { get; set; }
 
         public Question CurrentQuestion
         {
@@ -36,6 +38,10 @@ namespace TextQuest
             InitializeComponent();
             ScriptEngine = new Script(this, Data, Texts);
             CurrentQuestion = Data.Question(1);
+
+            List<Answer> ErrorAnswers = new List<Answer>();
+            ErrorAnswers.Add(new Answer(0, Texts.GetText("main", "error_answer"),"qustion=1"));
+            Error = new Question(0, Texts.GetText("main", "error"), "", ErrorAnswers);
         }
 
         /// <summary>

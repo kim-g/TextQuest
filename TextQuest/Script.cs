@@ -38,7 +38,15 @@ namespace TextQuest
                 case "language": SetLanguage(CommandAndParameters[1]); break;
                 case "question": ((Form1)Owner).CurrentQuestion = Data.Question(
                     Convert.ToInt32(CommandAndParameters[1])); break;
+                case "error": SetError(); break;
             }
+        }
+
+        private void SetError()
+        {
+            ((Form1)Owner).Error.Answers[0].Script = "question=" + 
+                ((Form1)Owner).CurrentQuestion.ID.ToString();
+            ((Form1)Owner).CurrentQuestion = ((Form1)Owner).Error;
         }
 
         private void SetLanguage(string Language)

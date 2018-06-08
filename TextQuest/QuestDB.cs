@@ -74,7 +74,7 @@ namespace TextQuest
 
             DataRow QuestRow = GetOne("`text_" + Language + "`, `script`", "Questions",
                 "id = " + ID.ToString());
-            return new Question(ID, QuestRow.ItemArray[0].ToString(),
+            return QuestRow == null ? null : new Question(ID, QuestRow.ItemArray[0].ToString(),
                 QuestRow.ItemArray[1].ToString(), Answers);
 
         }
