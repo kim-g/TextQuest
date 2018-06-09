@@ -9,6 +9,8 @@ namespace PhoneQuest
 {
 	public class StartPage : ContentPage
 	{
+        
+
         public StartPage() => Content = new StackLayout
         {
             Children = {
