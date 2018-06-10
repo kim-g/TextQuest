@@ -9,7 +9,7 @@ namespace PhoneQuest
 {
 	public class StartPage : ContentPage
 	{
-        
+
 
         public StartPage() => Content = new StackLayout
         {
@@ -23,8 +23,10 @@ namespace PhoneQuest
                                 Text = "Панель вопросов",
                                 HorizontalTextAlignment = TextAlignment.Center,
                                 VerticalTextAlignment = TextAlignment.Center
+                                
                             }
-                        }
+                        },
+                        VerticalOptions = LayoutOptions.FillAndExpand
                     },
 
                     new StackLayout
@@ -32,7 +34,9 @@ namespace PhoneQuest
                         Children =
                         {
                             new Label { Text = "Панель ответов" }
-                        }
+                        },
+                        VerticalOptions = LayoutOptions.End
+
                     }
 
                 }

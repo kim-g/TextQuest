@@ -14,7 +14,7 @@ namespace SQLite
 
         public string ErrorMsg;
 
-        public class DatabaseConnection_Android : IDatabaseConnection
+        public class DatabaseConnection_Android
         {
             public SQLiteConnection DbConnection()
             {
@@ -26,7 +26,7 @@ namespace SQLite
             }
         }
 
-        public SQLiteDataBase(string FileName = "")
+        /*public SQLiteDataBase(string FileName = "")
         {
             dbFileName = FileName;
             Connection = new SQLiteConnection();
@@ -314,6 +314,6 @@ namespace SQLite
         {
             DataTable Conf = ReadTable("SELECT `text_" + Language + "` AS 'text' FROM `texts` WHERE `class`='" + Class + "' AND `name`='" + TextName + "' LIMIT 1");
             return Conf == null ? "ERROR" : Conf.Rows[0].ItemArray[Conf.Columns.IndexOf("text")].ToString();
-        }
+        }*/
     }
 }
