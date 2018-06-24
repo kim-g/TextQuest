@@ -53,6 +53,8 @@ namespace SQLite.Structures
         private int _id;
         
         private string _script;
+        private string _image;
+        private string _comment;
 
         // Свойства
         [PrimaryKey, AutoIncrement]
@@ -65,8 +67,13 @@ namespace SQLite.Structures
         public string script
         {
             get { return _script; }
-            set { _script = value; OnPropertyChanged(nameof(script)); }
-        }    }
+            set { _script = value; OnPropertyChanged(nameof(_comment)); }
+        }
+
+        public string image { get => _image; set { _image = value; OnPropertyChanged(nameof(image)); } }
+        public string comment { get => _comment; set { _comment = value; OnPropertyChanged(nameof(comment)); } }
+
+    }
 
 
     [Table("Answers")]
@@ -76,6 +83,11 @@ namespace SQLite.Structures
         private int _id;
         private int _question;
         private string _script;
+        private int _left;
+        private int _top;
+        private int _width;
+        private int _height;
+        private string _comment;
 
         // Свойства
         [PrimaryKey, AutoIncrement]
@@ -97,6 +109,12 @@ namespace SQLite.Structures
             get { return _script; }
             set { _script = value; OnPropertyChanged(nameof(script)); }
         }
+
+        public int left { get => _left; set { _left = value; OnPropertyChanged(nameof(left)); } }
+        public int top { get => _top; set { _top = value; OnPropertyChanged(nameof(top)); } }
+        public int width { get => _width; set { _width = value; OnPropertyChanged(nameof(width)); } }
+        public int height { get => _height; set { _height = value; OnPropertyChanged(nameof(height)); } }
+        public string comment { get => _comment; set { _comment = value; OnPropertyChanged(nameof(comment)); } }
     }
 
     [Table("texts")]

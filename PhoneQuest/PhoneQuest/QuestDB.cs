@@ -57,7 +57,7 @@ namespace PhoneQuest
                 foreach (SQLite.Structures.Answers Row in QueryAnswers.AsEnumerable())
                 {
                     Answers.Add(new Answer(Row.id, Row.Text(Language),
-                        Row.script));
+                        Row.script, Row.left, Row.top, Row.width, Row.height));
                 }
 
             var QueryQuests = from Quest in database.Table<SQLite.Structures.Question>()
@@ -65,7 +65,7 @@ namespace PhoneQuest
                               select Quest;
 
             return QueryQuests.Count() == 0 ? null : new Question(QueryQuests.First().id, QueryQuests.First().Text(Language),
-                QueryQuests.First().script, Answers);
+                QueryQuests.First().script, Answers, QueryQuests.First().image);
 
         }
         

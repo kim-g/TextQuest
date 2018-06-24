@@ -35,6 +35,8 @@ namespace PhoneQuest
                 case "question": ((StartPage)Owner).CurrentQuestion = Data.Question(
                     Convert.ToInt32(CommandAndParameters[1])); break;
                 case "error": SetError(); break;
+                case "background": ((StartPage)Owner).SetBackground(CommandAndParameters[1]); break;
+                case "timer": ((StartPage)Owner).SetTimer(CommandAndParameters[1]); break;
             }
         }
 
